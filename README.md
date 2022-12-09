@@ -12,4 +12,4 @@ d) Change password
 NuGet packages:
  xunit 2.4.2 
  xunit.runner.visualstudio 
- Selenium.WebDriver 3.141.0 (Chrome, Firefox)
+"Selenium.WebDriver.ChromeDriver" version="108.0.5359.7100" needs to match with the version of installed browser 
