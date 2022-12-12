@@ -1,8 +1,7 @@
-﻿
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Threading;
 using OpenQA.Selenium;
-using Xunit;
+
 
 namespace AutomationWebApp.TestCases
 {

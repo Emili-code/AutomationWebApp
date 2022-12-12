@@ -5,10 +5,9 @@ using OpenQA.Selenium.Chrome;
 using System.IO;
 using Xunit;
 
-
 namespace AutomationWebApp.TestCases
 {
-    [Trait("Category", "Smoke")]
+    [Trait("Category", "Regression")]
     public class VerifyUI
     {
         private const string HomePage = "https://qa-task-web.ministryofprogramming.com/";

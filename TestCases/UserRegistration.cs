@@ -1,18 +1,15 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
+using AutomationWebApp.PageObjectModels;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace AutomationWebApp.TestCases
 {
     [Trait("Category", "Smoke")]
-    public class UserRegistration
+    public class UserRegistration 
     {
-        private const string HomePage = "https://qa-task-web.ministryofprogramming.com/";
         private const string SignUpPage = "https://qa-task-web.ministryofprogramming.com/signup";
-        private const string ConfirmPage = "https://qa-task-web.ministryofprogramming.com/pba";
 
         private readonly ITestOutputHelper output;
 
@@ -26,7 +23,10 @@ namespace AutomationWebApp.TestCases
         {
             using (IWebDriver driver = new ChromeDriver())
             {
-                driver.Navigate().GoToUrl(HomePage);
+                //driver.Navigate().GoToUrl(HomePage);
+
+                var homePage = new HomePageModel(driver);
+                homePage.NavigateTo();
 
                 driver.Manage().Window.Maximize();
                 //option1 without waiting for an element to be displayed
@@ -41,7 +41,7 @@ namespace AutomationWebApp.TestCases
 
                 Helper.waitToBeDisplayed(driver, By.Id("email"));
                 IWebElement email = driver.FindElement(By.Id("email"));
-                email.SendKeys("1test@gmail.com");
+                email.SendKeys("4test@gmail.com");
 
                 Helper.waitToBeDisplayed(driver, By.Id("name"));
                 IWebElement name = driver.FindElement(By.Id("name"));

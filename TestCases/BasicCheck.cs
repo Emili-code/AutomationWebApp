@@ -1,8 +1,7 @@
-﻿using System;
-using Xunit;
+﻿using Xunit;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System.Collections.ObjectModel;
+using AutomationWebApp.PageObjectModels;
 
 namespace AutomationWebApp
 {
@@ -19,10 +18,8 @@ namespace AutomationWebApp
         {
             using (IWebDriver driver = new ChromeDriver())
             {
-                driver.Navigate().GoToUrl(HomePage);
-
-                Assert.Equal(HomeTitle, driver.Title);
-                Assert.Equal(HomePage, driver.Url);
+                var homePage = new HomePageModel(driver);
+                homePage.NavigateTo();
             }
         }
 
@@ -32,12 +29,18 @@ namespace AutomationWebApp
         {
             using (IWebDriver driver = new ChromeDriver())
             {
-                driver.Navigate().GoToUrl(HomePage);
+                var homePage = new HomePageModel(driver);
+                homePage.NavigateTo();
 
                 driver.Navigate().Refresh();
+                homePage.EnsurePageLoaded();
 
-                Assert.Equal(HomeTitle, driver.Title);
-                Assert.Equal(HomePage, driver.Url);
+                //driver.Navigate().GoToUrl(HomePage);
+
+                //driver.Navigate().Refresh();
+
+                //Assert.Equal(HomeTitle, driver.Title);
+                //Assert.Equal(HomePage, driver.Url);
             }
         }
 
